@@ -41,20 +41,21 @@
 
       // Function to start the game.
       function startGame(player) {
-        const computer = computerChoice();
+        const computer = computerChoice().toUpperCase();
         let displayRound = "";
+        player = player.toUpperCase();
 
         if (player === computer) {
-          displayRound = "TIE!";
+          displayRound = `TIE! YOU BOTH PICK ${player}`;
         } else if (
-          (player === "rock" && computer === "scissors") ||
-          (player === "paper" && computer === "rock") ||
-          (player === "scissors" && computer === "paper")
+          (player === "ROCK" && computer === "SCISSORS") ||
+          (player === "PAPER" && computer === "ROCK") ||
+          (player === "SCISSORS" && computer === "PAPER")
         ) {
-          displayRound = "PLAYER WINS!";
+          displayRound = `PLAYER WINS! PLAYER: ${player} - COMPUTER: ${computer}`;
           playerScore++;
         } else {
-          displayRound = "COMPUTER WINS!";
+          displayRound = `COMPUTER WINS! PLAYER: ${player} - COMPUTER: ${computer}`;
           computerScore++;
         }
 
@@ -65,13 +66,13 @@
 
         if (playerScore === WIN_SCORE || computerScore === WIN_SCORE) {
           if (playerScore === WIN_SCORE) {
-            winner = "Player";
+            winner = "PLAYER";
           } else {
-            winner = "Computer";
+            winner = "COMPUTER";
           }
           document.querySelector(
             "#result"
-          ).textContent = `GAME OVER! ${winner} wins the game!`;
+          ).textContent = `GAME OVER! ${winner} WINS THE GAME!`;
           resetGame();
         }
       }
